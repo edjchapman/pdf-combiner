@@ -1,0 +1,39 @@
+[project]
+name = "pdf-combiner"
+version = "0.1.0"
+description = "Combine multiple PDF files into one with lossless compression"
+readme = "README.md"
+authors = [
+    { name = "Ed Chapman", email = "edchapman88@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "click>=8.3.1",
+    "pikepdf>=10.5.1",
+]
+
+[project.scripts]
+pdf-combiner = "pdf_combiner.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.9.7,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.15.8",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
